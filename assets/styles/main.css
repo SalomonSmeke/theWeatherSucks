@@ -12,13 +12,40 @@ body,html,section,main{
 }
 
 #page_0{
-
+  /* For browsers that do not support gradients :( */
+  background: #1ab3a5;
+  /* Safari 5.1 to 6.0 */
+  background: -webkit-repeating-linear-gradient(#FFF9BF, #3cbda8, #15b1a4, #09AEA3);
+  /* Opera 11.1 to 12.0 */
+  background: -o-repeating-linear-gradient(#FFF9BF, #3cbda8, #15b1a4, #09AEA3);
+  /* Firefox 3.6 to 15 */
+  background: -moz-repeating-linear-gradient(#FFF9BF, #3cbda8, #15b1a4, #09AEA3);
+  /* Standard syntax */
+  background: repeating-linear-gradient(#FFF9BF, #3cbda8, #15b1a4, #09AEA3);
 }
 
 #page_1{
-
+/* For browsers that do not support gradients :( */
+background: #129b9b;
+/* Safari 5.1 to 6.0 */
+background: -webkit-repeating-linear-gradient(#09AEA3, #129b9b, #1E8694);
+/* Opera 11.1 to 12.0 */
+background: -o-repeating-linear-gradient(#09AEA3, #129b9b, #1E8694);
+/* Firefox 3.6 to 15 */
+background: -moz-repeating-linear-gradient(#09AEA3, #129b9b, #1E8694);
+/* Standard syntax */
+background: repeating-linear-gradient(#09AEA3, #129b9b, #1E8694);
 }
 
 #page_2{
-  
+/* For browsers that do not support gradients :( */
+background: #50418a;
+/* Safari 5.1 to 6.0 */
+background: -webkit-repeating-linear-gradient(#1E8694, #50418a, #642687);
+/* Opera 11.1 to 12.0 */
+background: -o-repeating-linear-gradient(#1E8694, #50418a, #642687);
+/* Firefox 3.6 to 15 */
+background: -moz-repeating-linear-gradient(#1E8694, #50418a, #642687);
+/* Standard syntax */
+background: repeating-linear-gradient(#1E8694, #50418a, #642687);
 }
