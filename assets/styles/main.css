@@ -1,21 +1,35 @@
 body,html,section,main{
+  font-family: 'Ubuntu', sans-serif;
   height: 100%;
   margin: 0;
   padding: 0;
   border: 0;
+  font-size: 100%;
 }
 
 h1{
   border: 0;
   margin: 0;
   padding: 0;
+  font-size: 4em;
+  font-weight: normal;
+  text-align: center;
 }
 
 .container{
+  color: #fff;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+}
+
+.row{
+  width: inherit;
+}
+
+.col-12{
+  width: 100%;
 }
 
 .page{
@@ -37,28 +51,32 @@ h1{
   background: repeating-linear-gradient(#FFF9BF, #3cbda8, #15b1a4, #09AEA3);
 }
 
+#zip{
+  font-family: 'Share Tech Mono', serif;
+}
+
 #page_1{
-/* For browsers that do not support gradients :( */
-background: #129b9b;
-/* Safari 5.1 to 6.0 */
-background: -webkit-repeating-linear-gradient(#09AEA3, #129b9b, #1E8694);
-/* Opera 11.1 to 12.0 */
-background: -o-repeating-linear-gradient(#09AEA3, #129b9b, #1E8694);
-/* Firefox 3.6 to 15 */
-background: -moz-repeating-linear-gradient(#09AEA3, #129b9b, #1E8694);
-/* Standard syntax */
-background: repeating-linear-gradient(#09AEA3, #129b9b, #1E8694);
+  /* For browsers that do not support gradients :( */
+  background: #129b9b;
+  /* Safari 5.1 to 6.0 */
+  background: -webkit-repeating-linear-gradient(#09AEA3, #129b9b, #1E8694);
+  /* Opera 11.1 to 12.0 */
+  background: -o-repeating-linear-gradient(#09AEA3, #129b9b, #1E8694);
+  /* Firefox 3.6 to 15 */
+  background: -moz-repeating-linear-gradient(#09AEA3, #129b9b, #1E8694);
+  /* Standard syntax */
+  background: repeating-linear-gradient(#09AEA3, #129b9b, #1E8694);
 }
 
 #page_2{
-/* For browsers that do not support gradients :( */
-background: #50418a;
-/* Safari 5.1 to 6.0 */
-background: -webkit-repeating-linear-gradient(#1E8694, #50418a, #642687);
-/* Opera 11.1 to 12.0 */
-background: -o-repeating-linear-gradient(#1E8694, #50418a, #642687);
-/* Firefox 3.6 to 15 */
-background: -moz-repeating-linear-gradient(#1E8694, #50418a, #642687);
-/* Standard syntax */
-background: repeating-linear-gradient(#1E8694, #50418a, #642687);
+  /* For browsers that do not support gradients :( */
+  background: #50418a;
+  /* Safari 5.1 to 6.0 */
+  background: -webkit-repeating-linear-gradient(#1E8694, #50418a, #642687);
+  /* Opera 11.1 to 12.0 */
+  background: -o-repeating-linear-gradient(#1E8694, #50418a, #642687);
+  /* Firefox 3.6 to 15 */
+  background: -moz-repeating-linear-gradient(#1E8694, #50418a, #642687);
+  /* Standard syntax */
+  background: repeating-linear-gradient(#1E8694, #50418a, #642687);
 }
