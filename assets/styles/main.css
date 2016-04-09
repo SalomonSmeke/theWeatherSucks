@@ -102,7 +102,7 @@ h1{
   border: inherit;
   background-color: inherit;;
   font-size: inherit;
-  text-align: inherit;;
+  text-align: inherit;
   width: 20%;
   min-width: 180px;
 }
@@ -135,6 +135,10 @@ h1{
 #smileyMetrics span{
   text-align: left;
   width: 20%;
+}
+
+#sMLabels {
+  min-width: 62px;
 }
 
 #page_2{
