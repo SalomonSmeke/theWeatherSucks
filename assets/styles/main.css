@@ -120,6 +120,10 @@ h1{
   background: repeating-linear-gradient(#09AEA3, #129b9b, #1E8694);
 }
 
+#barContainer{
+  min-height: 100px;
+}
+
 #location{
   text-align: right;
   line-height: 180%;
