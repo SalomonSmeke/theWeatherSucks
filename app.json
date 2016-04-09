@@ -1,0 +1,8 @@
+{
+  "name": "The Weather Sucks",
+  "description": "schadenfreude, but for weather",
+  "repository": "https://github.com/SalomonSmeke/theWeatherSucks/tree/heroku",
+  "logo": "https://raw.githubusercontent.com/SalomonSmeke/theWeatherSucks/master/assets/Icons/Icon.png",
+  "keywords": ["node", "weather", "schadenfreude"],
+  "image": "assets/favicons/favicon-96x96.png"
+}
