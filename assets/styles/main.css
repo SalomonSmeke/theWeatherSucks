@@ -8,6 +8,27 @@ body,html,section,main{
   font-size: 100%;
 }
 
+#guards{
+  height: 100%;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  z-index: -1;
+}
+
+.scrollGuard{
+  height: 50%;
+  width: 100%;
+}
+
+#upperGuard{
+  background-color: #FFF9BF;
+}
+
+#lowerGuard{
+  background-color: #642687;
+}
+
 h1{
   border: 0;
   margin: 0;
