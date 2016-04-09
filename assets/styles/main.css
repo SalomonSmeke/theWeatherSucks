@@ -99,12 +99,12 @@ h1{
 #zip input{
   font-family: inherit;
   color: inherit;
-  border: none;
-  background-color: transparent;
-  font-size: 1em;
+  border: inherit;
+  background-color: inherit;;
+  font-size: inherit;
+  text-align: inherit;;
   width: 20%;
   min-width: 180px;
-  text-align: center;
 }
 
 #page_1{
