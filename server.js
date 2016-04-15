@@ -24,7 +24,7 @@ jsonApp.use(bodyParser.urlencoded({ extended: false }));
 //var Note = mongoose.model("Note", NoteSchema);
 
 //create http server
-http.createServer(jsonApp).listen(3030);
+http.createServer(jsonApp).listen(process.env.PORT || 3030);
 
 //json get route - update for mongo
 // jsonApp.get("/notes.json", function(req, res) {
