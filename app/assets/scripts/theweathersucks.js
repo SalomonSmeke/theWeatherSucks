@@ -14,12 +14,16 @@ function load(){
     }
   }
   function locToZip(position) {
-    /* use the google API to translate our position to zip code */
-    update ({zip: "60660", fetched: "yes"});
+    $.getJSON("/api/getLoc", function (response) {  //TODO how do we pass something to the backend?
+      console.log("response = "+response.toSource());
+      update({zip: "60660", country: "us", fetched: true}); //TODO replace with response IN THIS FORMAT
+    });
   }
   function locFail() {
-    update ({zip: "60660", fetched: "no"});
+    update ({zip: "60660", country "us", fetched: false});
   }
+
+//http://openweathermap.org/current
 
   function update(loc) {
     getWorseConditions(); //ASYNC D
@@ -48,18 +52,6 @@ function load(){
 
   function getWorseConditions() { //do this when pick and fetch location are done
 
-  }
-
-  function update() {
-    getWorseConditions(); //ASYNC D
-    setGreeting(); //ASYNC D
-    setIcon(); //ASYNC D
-    setSmileys(); //ASYNC D
-    placeTemperature(); //ASYNC D
-
-    getMetrics(); //ASYNC E... but actually E. Cause lets do it last.
-
-    drawMetricsD3(); //ASYNC F
   }
 
   fetchLocation();

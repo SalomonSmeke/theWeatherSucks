@@ -26,6 +26,14 @@ weatherSucks.use(bodyParser.urlencoded({ extended: false }));
 //create http server
 http.createServer(weatherSucks).listen(process.env.PORT || 3030);
 
+weatherSucks.get("/api/getLoc", function(req, res) {
+  //call location API <- MOCK FOR NOW
+});
+
+weatherSucks.get("/api/getCond", function(req, res) {
+  //call weather API <- MOCK FOR NOW
+});
+
 //json get route - update for mongo
 // jsonApp.get("/notes.json", function(req, res) {
 //   Note.find({}, function (error, notes) {
