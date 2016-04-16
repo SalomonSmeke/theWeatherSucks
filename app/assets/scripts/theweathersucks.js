@@ -2,7 +2,7 @@
 "use strict";
 
 function load(){
-
+  var parsedConds;
   function getLocation() {
     var geoOptions = {
     	maximumAge: 5 * 60 * 1000,
@@ -23,9 +23,22 @@ function load(){
     update ({zip: "60660", country "us", fetched: false});
   }
 
+/*
+var $deferredNotesRequest = $.getJSON (
+    "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?",
+    { tags: img_tags,
+      tagmode: "any",
+      format: "json"
+    });
+*/
 //http://openweathermap.org/current
 
   function update(loc) {
+    var $deferredConditionsRequest = $.getJSON(); //TODO GET CONDITIONS FROM SERVER API CALL
+    $deferredConditionsRequest.then(parseRequest,logFailure);
+
+    parseRequest();
+
     getWorseConditions(); //ASYNC D
     setGreeting(); //ASYNC D
     setIcon(); //ASYNC D
@@ -37,9 +50,6 @@ function load(){
     drawMetricsD3(); //ASYNC F
   }
 
-  function fetchConditions() {
-
-  }
   function pickType() { //do this when conditions is done
 
   }
