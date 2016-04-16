@@ -27,6 +27,7 @@ weatherSucks.use(bodyParser.urlencoded({ extended: false }));
 http.createServer(weatherSucks).listen(process.env.PORT || 3030);
 
 weatherSucks.get("/api/getLoc", function(req, res) {
+  res.json({a: "test"});
   //call location API <- MOCK FOR NOW
 });
 
