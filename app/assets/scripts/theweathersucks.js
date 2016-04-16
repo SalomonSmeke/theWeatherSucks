@@ -14,12 +14,13 @@ function load(){
     }
   }
   function locToZip(position) {
-    $.getJSON("/api/getLoc", function (response) {  //TODO how do we pass something to the backend?
+    $.getJSON("/api/getLoc", function (response) { //TODO how do we pass something to the backend?
       console.log("response = "+response.toSource());
       update({zip: "60660", country: "us", fetched: true}); //TODO replace with response IN THIS FORMAT
     });
   }
-  function locFail() {
+  function locFail(error) {
+    //TODO log a fault.
     update ({zip: "60660", country "us", fetched: false});
   }
 
