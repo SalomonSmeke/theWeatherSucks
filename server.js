@@ -35,7 +35,7 @@ weatherSucks.get("/api/getLoc", function(req, res) {
     var old = {zip: "60660", country: "us", fetched: true};
     console.log(response);
     console.log({zip: "60660", country: "us", fetched: true});
-    res.send( response );
+    res.send(body);
   });
 
   //res.json({a: "test"});
