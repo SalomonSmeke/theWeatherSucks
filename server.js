@@ -32,7 +32,10 @@ weatherSucks.get("/api/getLoc", function(req, res) {
   var req = "https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=" + process.env.GOOGLE_API;
   request.get(req, function(error, response, body){
     console.log(body);
-    res.json(body)
+    var old = {zip: "60660", country: "us", fetched: true};
+    var ret = response.results[1].formatted_address;
+    console.log(ret);
+    res.json( ret );
   });
 
   //res.json({a: "test"});
