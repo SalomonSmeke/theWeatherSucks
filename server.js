@@ -2,14 +2,14 @@ var express = require("express"),
     http = require("http"),
     bodyParser = require("body-parser"),
     mongoose = require("mongoose"),
-    jsonApp = express(),
+    weatherSucks = express(),
     notesTotal = {};
 
 //set as static file server...
-jsonApp.use(express.static(__dirname + "/app"));
+weatherSucks.use(express.static(__dirname + "/app"));
 
 //parse jQuery JSON to useful JS object
-jsonApp.use(bodyParser.urlencoded({ extended: false }));
+weatherSucks.use(bodyParser.urlencoded({ extended: false }));
 
 //connect to 424db1 DB in MongoDB
 //mongoose.connect('mongodb://localhost/424db1');
@@ -24,7 +24,7 @@ jsonApp.use(bodyParser.urlencoded({ extended: false }));
 //var Note = mongoose.model("Note", NoteSchema);
 
 //create http server
-http.createServer(jsonApp).listen(process.env.PORT || 3030);
+http.createServer(weatherSucks).listen(process.env.PORT || 3030);
 
 //json get route - update for mongo
 // jsonApp.get("/notes.json", function(req, res) {
