@@ -35,7 +35,7 @@ weatherSucks.get("/api/getLoc", function(req, res) {
     res.json(body)
   });
 
-  res.json({a: "test"});
+  //res.json({a: "test"});
   //call location API <- MOCK FOR NOW
 });
 
