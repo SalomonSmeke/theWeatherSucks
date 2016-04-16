@@ -6,6 +6,7 @@ function load(){
   function getLocation() {
     var geoOptions = {
     	maximumAge: 5 * 60 * 1000,
+      timeout: 10 * 1000
     }
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(locToZip, locFail, geoOptions);
