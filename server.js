@@ -47,7 +47,7 @@ weatherSucks.get("/api/getCond", function(req, res) {
   });
   //call weather API <- MOCK FOR NOW
 });
-
+/*
 var $deferredNotesRequest = $.getJSON (
     "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?",
     { tags: img_tags,
