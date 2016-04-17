@@ -1,6 +1,5 @@
 function load(){
   "use strict";
-
   var parsedConds;
   function getLocation() {
     var geoOptions = {
@@ -14,14 +13,16 @@ function load(){
     }
   }
   function locToZip(position) {
-    $.getJSON("/api/getLoc", function (response) { //TODO how do we pass something to the backend?
+    var lat = (position.coords.latitude || "0") + "";
+    var lon = (position.coords.longitude || "0") + "";
+    $.getJSON("/api/getLoc?lat=" + lat + "&lon=" + lon , function (response) { //TODO how do we pass something to the backend?
       console.log("response = "+response.toSource());
       update({zip: "60660", country: "us", fetched: true}); //TODO replace with response IN THIS FORMAT
     });
   }
   function locFail(error) {
     //TODO log a fault.
-    update ({zip: "60660", country "us", fetched: false});
+    update ({zip: "60660", country: "us", fetched: false});
   }
 
 /*
@@ -35,39 +36,39 @@ var $deferredNotesRequest = $.getJSON (
 //http://openweathermap.org/current
 
   function update(loc) {
-    var $deferredConditionsRequest = $.getJSON(); //TODO GET CONDITIONS FROM SERVER API CALL
-    $deferredConditionsRequest.then(parseRequest,logFailure);
+    //var $deferredConditionsRequest = $.getJSON(); //TODO GET CONDITIONS FROM SERVER API CALL
+    //$deferredConditionsRequest.then(parseRequest,logFailure);
 
-    parseRequest();
-
-    getWorseConditions(); //ASYNC D
-    setGreeting(); //ASYNC D
-    setIcon(); //ASYNC D
-    setSmileys(); //ASYNC D
-    placeTemperature(); //ASYNC D
-
-    getMetrics(); //ASYNC E... but actually E. Cause lets do it last.
-
-    drawMetricsD3(); //ASYNC F
+    // parseRequest();
+    //
+    // getWorseConditions(); //ASYNC D
+    // setGreeting(); //ASYNC D
+    // setIcon(); //ASYNC D
+    // setSmileys(); //ASYNC D
+    // placeTemperature(); //ASYNC D
+    //
+    // getMetrics(); //ASYNC E... but actually E. Cause lets do it last.
+    //
+    // drawMetricsD3(); //ASYNC F
   }
-
-  function pickType() { //do this when conditions is done
-
-  }
-  function setPallete() { //do this when pickType is done
-
-  }
-  function setLocation() { //do this when location is done
-
-  }
-
-  function getWorseConditions() { //do this when pick and fetch location are done
-
-  }
-
-  fetchLocation();
-  update();
-  bindInteractivity();
+  //
+  // function pickType() { //do this when conditions is done
+  //
+  // }
+  // function setPallete() { //do this when pickType is done
+  //
+  // }
+  // function setLocation() { //do this when location is done
+  //
+  // }
+  //
+  // function getWorseConditions() { //do this when pick and fetch location are done
+  //
+  // }
+  //
+  // fetchLocation();
+  // update();
+  // bindInteractivity();
 }
 
 
