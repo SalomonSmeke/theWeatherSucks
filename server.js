@@ -39,11 +39,15 @@ weatherSucks.get("/api/getCond", function(req, res) {
   process.env.WEATHER_API
   var req = "https://api.openweathermap.org/data/2.5/weather?"
   request.get(
-    req, {
+    req,
+    {
     zip: "4040,us",
-    key: process.env.WEATHER_API
-    } ,function(error, response, body){
-      res.send(body);
+    appid: process.env.WEATHER_API
+    } ,
+    function(error, response, body){
+    console.log(error);
+    console.log(JSON.parse(body));
+    res.send(body);
   });
   //call weather API <- MOCK FOR NOW
 });
