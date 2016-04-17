@@ -32,17 +32,29 @@ weatherSucks.get("/api/getLoc", function(req, res) {
   var req = "https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=" + process.env.GOOGLE_API;
   request.get(req, function(error, response, body){
     res.send(body);
-  }); //TODO: error handling.
+  }); //TODO: error handling.nd
 });
 
 weatherSucks.get("/api/getCond", function(req, res) {
   process.env.WEATHER_API
-  var req = "https://api.openweathermap.org/data/2.5/weather?zip=94040,us"
-  request.get(req, function(error, response, body){
-    res.send(body);
+  var req = "https://api.openweathermap.org/data/2.5/weather?"
+  request.get(
+    req, {
+    zip: "4040,us",
+    key: process.env.WEATHER_API
+    } ,function(error, response, body){
+      res.send(body);
   });
   //call weather API <- MOCK FOR NOW
 });
+
+var $deferredNotesRequest = $.getJSON (
+    "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?",
+    { tags: img_tags,
+      tagmode: "any",
+      format: "json"
+    });
+*/
 
 //json get route - update for mongo
 // jsonApp.get("/notes.json", function(req, res) {
