@@ -36,13 +36,14 @@ weatherSucks.get("/api/getLoc", function(req, res) {
 });
 
 weatherSucks.get("/api/getCond", function(req, res) {
-  var req = "http://api.openweathermap.org/data/2.5/weather?zip=4040,us&appid=" + process.env.WEATHER_API
+  console.log("Weather requested at + "req.query.zip);
+  var zip = req.query.zip;
+  req = "http://api.openweathermap.org/data/2.5/weather?zip=" + req.query.zip + "&appid=" + process.env.WEATHER_API
   request.get(req, function(error, response, body){
     console.log(error);
     console.log(body);
     res.send(body);
   });
-  //call weather API <- MOCK FOR NOW
 });
 /*
 var $deferredNotesRequest = $.getJSON (
