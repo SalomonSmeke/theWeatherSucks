@@ -28,17 +28,19 @@ weatherSucks.use(bodyParser.urlencoded({ extended: false }));
 http.createServer(weatherSucks).listen(process.env.PORT || 3030);
 
 weatherSucks.get("/api/getLoc", function(req, res) {
-  //TODO: Pass in coords
-  var req = "https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=" + process.env.GOOGLE_API;
+  var lat = req.query.lat || 42.02;
+  var lon = req.query.lon || -87.67;
+  console.log("LatLon Conversion requested for: " + lat + " " + lon);
+  req = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + lon + "&key=" + process.env.GOOGLE_API;
   request.get(req, function(error, response, body){
     res.send(body);
   }); //TODO: error handling.nd
 });
 
 weatherSucks.get("/api/getCond", function(req, res) {
-  console.log("Weather requested at + "req.query.zip);
-  var zip = req.query.zip;
-  req = "http://api.openweathermap.org/data/2.5/weather?zip=" + req.query.zip + "&appid=" + process.env.WEATHER_API
+  var zip = req.query.zip || "60660,us";
+  console.log("Weather requested at: " + zip);
+  req = "http://api.openweathermap.org/data/2.5/weather?zip=" + zip + "&appid=" + process.env.WEATHER_API;
   request.get(req, function(error, response, body){
     console.log(error);
     console.log(body);
