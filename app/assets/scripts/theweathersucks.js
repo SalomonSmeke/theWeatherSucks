@@ -1,7 +1,6 @@
-
-"use strict";
-
 function load(){
+  "use strict";
+
   var parsedConds;
   function getLocation() {
     var geoOptions = {
@@ -11,7 +10,7 @@ function load(){
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(locToZip, locFail, geoOptions);
     } else {
-        locFail();
+        locFail("Not supported by browser or disabled");
     }
   }
   function locToZip(position) {

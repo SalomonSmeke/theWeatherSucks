@@ -28,21 +28,19 @@ weatherSucks.use(bodyParser.urlencoded({ extended: false }));
 http.createServer(weatherSucks).listen(process.env.PORT || 3030);
 
 weatherSucks.get("/api/getLoc", function(req, res) {
-
+  //TODO: Pass in coords
   var req = "https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=" + process.env.GOOGLE_API;
   request.get(req, function(error, response, body){
-    console.log(body);
-    var old = {zip: "60660", country: "us", fetched: true};
-
-    console.log(JSON.parse(body));
     res.send(body);
-  });
-
-  //res.json({a: "test"});
-  //call location API <- MOCK FOR NOW
+  }); //TODO: error handling.
 });
 
 weatherSucks.get("/api/getCond", function(req, res) {
+  process.env.WEATHER_API
+  var req = "https://api.openweathermap.org/data/2.5/weather?zip=94040,us"
+  request.get(req, function(error, response, body){
+    res.send(body);
+  });
   //call weather API <- MOCK FOR NOW
 });
 
