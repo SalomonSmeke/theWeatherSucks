@@ -36,17 +36,10 @@ weatherSucks.get("/api/getLoc", function(req, res) {
 });
 
 weatherSucks.get("/api/getCond", function(req, res) {
-  process.env.WEATHER_API
-  var req = "https://api.openweathermap.org/data/2.5/weather?"
-  request.get(
-    req,
-    {
-    zip: "4040,us",
-    appid: process.env.WEATHER_API
-    } ,
-    function(error, response, body){
+  var req = "https://api.openweathermap.org/data/2.5/weather?zip=4040,us&appid=" + process.env.WEATHER_API
+  request.get(req, function(error, response, body){
     console.log(error);
-    console.log(JSON.parse(body));
+    console.log(body);
     res.send(body);
   });
   //call weather API <- MOCK FOR NOW
