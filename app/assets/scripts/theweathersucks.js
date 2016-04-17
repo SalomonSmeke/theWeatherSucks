@@ -9,20 +9,59 @@ function load(){
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(locToZip, locFail, geoOptions);
     } else {
-        locFail("Not supported by browser or disabled");
+        locFail("GeoLocation: Not supported by browser or disabled");
     }
   }
   function locToZip(position) {
     var lat = (position.coords.latitude || "0") + "";
     var lon = (position.coords.longitude || "0") + "";
-    $.getJSON("/api/getLoc?lat=" + lat + "&lon=" + lon , function (response) { //TODO how do we pass something to the backend?
-      console.log("response = "+response.toSource());
-      update({zip: "60660", country: "us", fetched: true}); //TODO replace with response IN THIS FORMAT
+    var deferredR = $.getJSON("/api/getLoc?lat=" + lat + "&lon=" + lon , function (response) { //TODO error should send to locFail
+      update(zipParse(response));
     });
   }
   function locFail(error) {
-    //TODO log a fault.
-    update ({zip: "60660", country: "us", fetched: false});
+    console.error(error);
+    update ({zip: "60660", country: "us", state: "il", city: "chicago", fetched: false});
+  }
+  function zipParse(response) {
+    var state, city, zip;
+    var res = JSON.parse(response);
+    //UGLY, but easy to read. FIND STATE.
+    loop:{ for (result in res.results) {
+      for (addrComp in result.address_components){
+        for (type in addrComp.types){
+          if (type==="administrative_area_level_1"){
+            state = addrComp.short_name;
+            break loop;
+          }
+        }
+      }
+    }}
+    loop:{ for (result in res.results){
+      for (addrComp in result.address_components){
+        for (type in addrComp.types){
+          if (type==="locality"){
+            city = addrComp.short_name;
+            break loop;
+          }
+        }
+      }
+    }}
+    loop:{ for (result in res.results){
+      for (addrComp in result.address_components){
+        for (type in addrComp.types){
+          if (type==="postal_code"){
+            zip = addrComp.short_name;
+            break loop;
+          }
+        }
+      }
+    }}
+    if (city=="" || state =="" || zip==""){
+      console.error("Failed to find location at those coordinates, using default.");
+      return({zip: "60660", country: "us", state: "il", city: "chicago", fetched: false});
+    }
+    return {zip: zip, country: "us", state: state, city: city, fetched: true};
   }
 
 /*
