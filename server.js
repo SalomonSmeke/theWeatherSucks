@@ -40,7 +40,7 @@ weatherSucks.get("/api/getLoc", function(req, res) {
 weatherSucks.get("/api/getCond", function(req, res) {
   var zip = (req.query.zip || "60660,us") + "";
   console.log("Weather requested at: " + zip);
-  req = "http://api.openweathermap.org/data/2.5/weather&zip=" + zip + "&appid=" + process.env.WEATHER_API;
+  req = "http://api.openweathermap.org/data/2.5/weather?&zip=" + zip + "&appid=" + process.env.WEATHER_API;
   request.get(req, function(error, response, body){
     console.log(error);
     console.log(body);
