@@ -42,7 +42,7 @@ weatherSucks.get("/api/getCond", function(req, res) {
   console.log("Weather requested at: " + zip);
   req = "http://api.openweathermap.org/data/2.5/weather?&zip=" + zip + "&appid=" + process.env.WEATHER_API;
   request.get(req, function(error, response, body){
-    console.log(error);
+    if (error) console.error(error);
     console.log(body);
     res.send(body);
   });

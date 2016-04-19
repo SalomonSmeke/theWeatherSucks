@@ -2,6 +2,7 @@ function load(){
   "use strict";
   var parsedConds;
   function getLocation() {
+    console.log("Location Request Started...")
     var geoOptions = {
     	maximumAge: 5 * 60 * 1000,
       timeout: 10 * 1000
@@ -15,6 +16,7 @@ function load(){
   function locToZip(position) {
     var lat = (position.coords.latitude || "0") + "";
     var lon = (position.coords.longitude || "0") + "";
+    console.log("Location conversion requested for: Lat " + lat + " Lon " + lon)
     var deferredR = $.getJSON("/api/getLoc?lat=" + lat + "&lon=" + lon , function (response) { //TODO error should send to locFail
       update(zipParse(response));
     });
@@ -23,44 +25,44 @@ function load(){
     console.error(error);
     update ({zip: "60660", country: "us", state: "il", city: "chicago", fetched: false});
   }
-  function zipParse(response) {
+  function zipParse(res) {
     var state, city, zip;
-    var res = JSON.parse(response);
     //UGLY, but easy to read. FIND STATE.
-    loop:{ for (result in res.results) {
-      for (addrComp in result.address_components){
-        for (type in addrComp.types){
-          if (type==="administrative_area_level_1"){
-            state = addrComp.short_name;
+    loop:{ for (var result in res.results) {
+      for (var addrComp in res.results[result].address_components){
+        for (var type in res.results[result].address_components[addrComp].types){
+          if (res.results[result].address_components[addrComp].types[type]==="administrative_area_level_1"){
+            state = res.results[result].address_components[addrComp].short_name;
             break loop;
           }
         }
       }
     }}
-    loop:{ for (result in res.results){
-      for (addrComp in result.address_components){
-        for (type in addrComp.types){
-          if (type==="locality"){
-            city = addrComp.short_name;
+    loop:{ for (var result in res.results) {
+      for (var addrComp in res.results[result].address_components){
+        for (var type in res.results[result].address_components[addrComp].types){
+          if (res.results[result].address_components[addrComp].types[type]==="locality"){
+            city = res.results[result].address_components[addrComp].short_name;
             break loop;
           }
         }
       }
     }}
-    loop:{ for (result in res.results){
-      for (addrComp in result.address_components){
-        for (type in addrComp.types){
-          if (type==="postal_code"){
-            zip = addrComp.short_name;
+    loop:{ for (var result in res.results) {
+      for (var addrComp in res.results[result].address_components){
+        for (var type in res.results[result].address_components[addrComp].types){
+          if (res.results[result].address_components[addrComp].types[type]==="postal_code"){
+            zip = res.results[result].address_components[addrComp].short_name;
             break loop;
           }
         }
       }
     }}
-    if (city=="" || state =="" || zip==""){
+    if (city==null || state ==null || zip==null){
       console.error("Failed to find location at those coordinates, using default.");
       return({zip: "60660", country: "us", state: "il", city: "chicago", fetched: false});
     }
+    console.log("Successful location get: " + zip + " " + state + " " + city);
     return {zip: zip, country: "us", state: state, city: city, fetched: true};
   }
 
@@ -75,8 +77,8 @@ var $deferredNotesRequest = $.getJSON (
 //http://openweathermap.org/current
 
   function update(loc) {
-    //var $deferredConditionsRequest = $.getJSON(); //TODO GET CONDITIONS FROM SERVER API CALL
-    //$deferredConditionsRequest.then(parseRequest,logFailure);
+    var $deferredConditionsRequest = $.getJSON("/api/getCond?zip=" + loc.zip + "," + loc.country);
+    $deferredConditionsRequest.then(console.log(res) , console.log("dont got em"));
 
     // parseRequest();
     //
@@ -105,8 +107,7 @@ var $deferredNotesRequest = $.getJSON (
   //
   // }
   //
-  // fetchLocation();
-  // update();
+   getLocation();
   // bindInteractivity();
 }
 
