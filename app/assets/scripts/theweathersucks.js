@@ -28,37 +28,23 @@ function load(){
   }
   function zipParse(res) {
     var state, city, zip;
-    //UGLY, but easy to read. FIND STATE.
-    loop:{ for (var result in res.results) {
-      for (var addrComp in res.results[result].address_components){
-        for (var type in res.results[result].address_components[addrComp].types){
-          if (res.results[result].address_components[addrComp].types[type]==="administrative_area_level_1"){
-            state = res.results[result].address_components[addrComp].short_name;
-            break loop;
+    //UGLY, but easy to read.
+    function unwrapZipRequest(input, search){
+     for (var result in input.results) {
+        for (var addrComp in input.results[result].address_components){
+          for (var type in input.results[result].address_components[addrComp].types){
+            if (input.results[result].address_components[addrComp].types[type]===search){
+              return input.results[result].address_components[addrComp].short_name;
+            }
           }
         }
       }
-    }}
-    loop:{ for (var result in res.results) {
-      for (var addrComp in res.results[result].address_components){
-        for (var type in res.results[result].address_components[addrComp].types){
-          if (res.results[result].address_components[addrComp].types[type]==="locality"){
-            city = res.results[result].address_components[addrComp].short_name;
-            break loop;
-          }
-        }
-      }
-    }}
-    loop:{ for (var result in res.results) {
-      for (var addrComp in res.results[result].address_components){
-        for (var type in res.results[result].address_components[addrComp].types){
-          if (res.results[result].address_components[addrComp].types[type]==="postal_code"){
-            zip = res.results[result].address_components[addrComp].short_name;
-            break loop;
-          }
-        }
-      }
-    }}
+    }
+
+    state = unwrapZipRequest(res, "administrative_area_level_1");
+    city = unwrapZipRequest(res, "locality");
+    zip = unwrapZipRequest(res, "postal_code");
+
     if (city==null || state ==null || zip==null){
       console.error("Failed to find location at those coordinates, using default.");
       return(defaultLoc);
