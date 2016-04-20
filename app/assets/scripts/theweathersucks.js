@@ -1,6 +1,7 @@
 function load(){
   "use strict";
-  var parsedConds;
+  var defaultLoc = {zip: "60660", country: "us", state: "il", city: "chicago", fetched: false}
+  var defaultWeather = {zip: "60660", country: "us", state: "il", city: "chicago", fetched: false}
   function getLocation() {
     console.log("Location Request Started...")
     var geoOptions = {
@@ -23,7 +24,7 @@ function load(){
   }
   function locFail(error) {
     console.error(error);
-    update ({zip: "60660", country: "us", state: "il", city: "chicago", fetched: false});
+    update (defaultLoc);
   }
   function zipParse(res) {
     var state, city, zip;
@@ -60,7 +61,7 @@ function load(){
     }}
     if (city==null || state ==null || zip==null){
       console.error("Failed to find location at those coordinates, using default.");
-      return({zip: "60660", country: "us", state: "il", city: "chicago", fetched: false});
+      return(defaultLoc);
     }
     console.log("Successful location get: " + zip + " " + state + " " + city);
     return {zip: zip, country: "us", state: state, city: city, fetched: true};
@@ -77,11 +78,17 @@ var $deferredNotesRequest = $.getJSON (
 //http://openweathermap.org/current
 
   function update(loc) {
+    var weather;
     var $deferredConditionsRequest = $.getJSON("/api/getCond?zip=" + loc.zip + "," + loc.country);
-    $deferredConditionsRequest.then(console.log(res) , console.log("dont got em"));
-
-    // parseRequest();
-    //
+    $deferredConditionsRequest.then(function(value) {
+      console.log("Looks like we got it! " + JSON.stringify(value));
+      weather = weatherParse(value);
+      console.log("parsed: " + JSON.stringify(weather)); //TODO: replace
+    }, function(reason) {
+      console.error("frick" + reason);
+      weather = defaultWeather;
+    });
+    var worseWeather;
     // getWorseConditions(); //ASYNC D
     // setGreeting(); //ASYNC D
     // setIcon(); //ASYNC D
@@ -91,6 +98,9 @@ var $deferredNotesRequest = $.getJSON (
     // getMetrics(); //ASYNC E... but actually E. Cause lets do it last.
     //
     // drawMetricsD3(); //ASYNC F
+  }
+  function weatherParse(value){
+    return defaultWeather; //TODO: parse weather
   }
   //
   // function pickType() { //do this when conditions is done
