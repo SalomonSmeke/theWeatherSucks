@@ -1,7 +1,7 @@
 function load(){
   "use strict";
   var defaultLoc = {zip: "60660", country: "us", state: "il", city: "chicago", fetched: false}
-  var defaultWeather = {zip: "60660", country: "us", state: "il", city: "chicago", fetched: false}
+  var defaultWeather = {zip: "60660", country: "us", state: "il", city: "chicago", fetched: false} //{type: type, desc: desc, temp: temp, tempMin: tempMin, tempMax: tempMax, humidity: humidity, wind: wind, fetched: true}
   function getLocation() {
     console.log("Location Request Started...")
     var geoOptions = {
@@ -41,9 +41,9 @@ function load(){
       }
     }
 
-    state = unwrapZipRequest(res, "administrative_area_level_1");
-    city = unwrapZipRequest(res, "locality");
-    zip = unwrapZipRequest(res, "postal_code");
+    state = unwrapZipRequest(res, "administrative_area_level_1") || null;
+    city = unwrapZipRequest(res, "locality") || null;
+    zip = unwrapZipRequest(res, "postal_code") || null;
 
     if (city==null || state ==null || zip==null){
       console.error("Failed to find location at those coordinates, using default.");
@@ -67,9 +67,13 @@ var $deferredNotesRequest = $.getJSON (
     var weather;
     var $deferredConditionsRequest = $.getJSON("/api/getCond?zip=" + loc.zip + "," + loc.country);
     $deferredConditionsRequest.then(function(value) {
-      console.log("Looks like we got it! " + JSON.stringify(value));
+      console.log("Response from server received.");
       weather = weatherParse(value);
-      console.log("parsed: " + JSON.stringify(weather)); //TODO: replace
+      if (weather.fetched){
+        console.log("Weather correctly fetched: " + JSON.stringify(weather))
+      } else {
+        console.error("Weather fetch failed, using default.")
+      }
     }, function(reason) {
       console.error("frick" + reason);
       weather = defaultWeather;
@@ -86,7 +90,47 @@ var $deferredNotesRequest = $.getJSON (
     // drawMetricsD3(); //ASYNC F
   }
   function weatherParse(value){
-    return defaultWeather; //TODO: parse weather
+    var type, desc, temp, tempMin, tempMax, humidity, wind;
+
+    var flag = false;
+    if (value.weather !== undefined) {
+      if (value.weather[0].main !== undefined && value.weather[0].description !== undefined) {
+        type = value.weather[0].main;
+        desc = value.weather[0].description;
+      } else {
+        flag = true;
+      }
+    } else {
+      flag = true;
+    }
+
+    if (value.main !== undefined) {
+      if (value.main.temp !== undefined && value.main.temp_min !== undefined && value.main.temp_max !== undefined && value.main.humidity !== undefined) {
+        temp = value.main.temp;
+        tempMin = value.main.temp_min;
+        tempMax = value.main.temp_max;
+      } else {
+        flag = true;
+      }
+    } else {
+      flag = true;
+    }
+
+    if (value.wind !== undefined) {
+      if (value.wind.speed !== undefined) {
+        wind = value.wind.speed;
+      } else {
+        flag = true;
+      }
+    } else {
+      flag = true;
+    }
+
+    if (flag) {
+      return defaultWeather;
+    } else {
+      return {type: type, desc: desc, temp: temp, tempMin: tempMin, tempMax: tempMax, humidity: humidity, wind: wind, fetched: true};
+    }
   }
   //
   // function pickType() { //do this when conditions is done
