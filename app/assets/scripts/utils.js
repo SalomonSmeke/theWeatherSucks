@@ -26,11 +26,12 @@ function zipParse(res) {
 }
 
 function weatherParse(value){
-  var type, desc, temp, tempMin, tempMax, humidity, wind;
+  var id, type, desc, temp, tempMin, tempMax, humidity, wind;
 
   var flag = false;
   if (value.weather !== undefined) {
-    if (value.weather[0].main !== undefined && value.weather[0].description !== undefined) {
+    if (value.weather[0].main !== undefined && value.weather[0].description !== undefined && value.weather[0].id !== undefined) {
+      id = value.weather[0].id;
       type = value.weather[0].main;
       desc = value.weather[0].description;
     } else {
@@ -65,6 +66,6 @@ function weatherParse(value){
   if (flag) {
     return false;
   } else {
-    return {type: type, desc: desc, temp: temp, tempMin: tempMin, tempMax: tempMax, humidity: humidity, wind: wind, fetched: true};
+    return {id: id, type: type, desc: desc, temp: temp, tempMin: tempMin, tempMax: tempMax, humidity: humidity, wind: wind, fetched: true};
   }
 }
