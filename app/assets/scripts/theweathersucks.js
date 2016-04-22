@@ -34,7 +34,7 @@ function load(){
   }
 
   function update(loc) {
-    var weather, type;
+    var weather,type;
 
     var $deferredConditionsRequest = $.getJSON("/api/getCond?zip=" + loc.zip + "," + loc.country);
 
@@ -47,7 +47,7 @@ function load(){
       function(reason){type = pickType(weather)}
     );
 
-    var type =
+    var type = "";
     var worseWeather;
 
     // getWorseConditions(); //ASYNC D

@@ -115,15 +115,14 @@ function condFetchFail(reason){
 
 function pickType(weather){
   var temp = weather.temp;
-  var type;
-  if (temp <= 8){
-    type = conditionsLookup.cold;
+  if (temp <= 10){
+    console.log("brr, it looks cold there.");
+    return conditionsLookup.cold;
   }
   if (temp >= 28 || (temp >= 25 && weather.temp.humidity >= 80)) {
-    type = conditionsLookup.warm;
+    console.log("dont get heatstroke!");
+    return conditionsLookup.warm;
   }
-  if (!type){
-    type = conditionsLookup.neutral;
-  }
-  return type;
+  console.log("hey now... it looks fine down there");
+  return conditionsLookup.neutral;
 }
