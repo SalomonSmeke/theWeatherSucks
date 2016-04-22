@@ -43,38 +43,51 @@ function load(){
       function(value){weather = condFetchSucc(value)},
       function(reason){weather = condFetchFail(reason)}
     ).then(
-      function(value){type = pickType(weather)},
+      function(value){type = pickType(weather);
+      },
       function(reason){type = pickType(weather)}
     );
 
-    var type = "";
+    //set
+
+    var $deferredWorker1 = $.Deferred();
+    var $deferredWorker2 = $.Deferred();
+
+    $.when($deferredConditionsRequest).done(
+      function(args) {
+        $deferredWorker1.resolve();
+        $deferredWorker1.then(
+          function(value){
+            // setPallete(conditionsRLookup[type]);
+            // setGreeting(conditionsRLookup[type]);
+            // setIcon(weather);
+            // setLocation(loc);
+            // setSmileys(weather);
+            // placeTemperature(weather);
+          }
+        )
+      }
+    );
+
     var worseWeather;
 
-    // getWorseConditions(); //ASYNC D
-    // setGreeting(); //ASYNC D
-    // setIcon(); //ASYNC D
-    // setSmileys(); //ASYNC D
-    // placeTemperature(); //ASYNC D
-    //
-    // getMetrics(); //ASYNC E... but actually E. Cause lets do it last.
-    //
-    // drawMetricsD3(); //ASYNC F
+    $.when($deferredConditionsRequest).done(
+      function(args) {
+        $deferredWorker2.resolve();
+        $deferredWorker2.then(
+          function(value){
+            //getWorseConditions(weather);
+          }
+        );
+      }
+    ).then(
+      function(args) {
+        //getMetrics();
+        //drawMetricsD3();
+      }
+    );
   }
-  //
-  // function pickType() { //do this when conditions is done
-  //
-  // }
-  // function setPallete() { //do this when pickType is done
-  //
-  // }
-  // function setLocation() { //do this when location is done
-  //
-  // }
-  //
-  // function getWorseConditions() { //do this when pick and fetch location are done
-  //
-  // }
-  //
+
    getLocation();
   // bindInteractivity();
 }
