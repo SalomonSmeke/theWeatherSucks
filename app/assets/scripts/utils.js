@@ -73,16 +73,17 @@ function weatherParse(value){
 
 function condFetchSucc(value){
     console.log("Response from server received.");
-    weather = weatherParse(value);
-    if (weather){
-      console.log("Weather correctly fetched: " + JSON.stringify(weather));
+    var val = weatherParse(value);
+    if (val){
+      console.log("Weather correctly fetched: " + JSON.stringify(val));
+      return val
     } else {
-      weather = defaultWeather;
-      console.error("Weather fetch failed, using default: " + JSON.stringify(weather));
+      console.error("Weather fetch failed, using default: " + JSON.stringify(defaultWeather));
+      return defaultWeather;
     }
 }
 
 function condFetchFail(reason){
   console.error("frick" + reason);
-  weather = defaultWeather;
+  return defaultWeather;
 }

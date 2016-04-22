@@ -40,8 +40,8 @@ function load(){
     var $deferredConditionsRequest = $.getJSON("/api/getCond?zip=" + loc.zip + "," + loc.country);
 
     $deferredConditionsRequest.then(
-      function(value){condFetchSucc(value)},
-      function(reason){condFetchFail(reason)});
+      function(value){weather = condFetchSucc(value)},
+      function(reason){weather = condFetchFail(reason)});
 
     var worseWeather;
 
