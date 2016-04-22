@@ -39,10 +39,12 @@ function load(){
 
     var $deferredConditionsRequest = $.getJSON("/api/getCond?zip=" + loc.zip + "," + loc.country);
 
-    $deferredConditionsRequest.then(
+    $deferredConditionsRequest
+    .then(
       function(value){weather = condFetchSucc(value)},
-      function(reason){weather = condFetchFail(reason)});
-
+      function(reason){weather = condFetchFail(reason)}
+    );
+    
     var worseWeather;
 
     // getWorseConditions(); //ASYNC D

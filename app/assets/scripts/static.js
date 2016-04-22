@@ -1,5 +1,5 @@
 var defaultLoc = {zip: "60660", country: "us", state: "il", city: "chicago", fetched: false};
-var defaultWeather = {id: 500, type: "Rain", desc: "light rain", temp: 286.43, tempMin: 286.43, tempMax: 286.43, wind: 3.11, fetched: false};
+var defaultWeather = {id: 500, type: "Rain", desc: "light rain", temp: 13.28, tempMin: 13.28, tempMax: 13.28, wind: 3.11, fetched: false};
 var conditionsLookup = {cold: 0, neutral: 1, warm: 2};
 var conditionsRLookup = ["cold","neutral","warm"];
 
