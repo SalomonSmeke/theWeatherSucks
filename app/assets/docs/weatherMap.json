@@ -1,50 +1,50 @@
 {
     "weatherMap":
-    [
     {
-        "group": "2xx",
-        "day-icon": "day-thunderstorm",
-        "night-icon": "night-thunderstorm"
-    },
-    {
-        "group": "3xx",
-        "day-icon": "day-raincloud",
-        "night-icon": "night-raincloud"
-    },
-    {
-        "group": "5xx",
-        "day-icon": "day-raincloud",
-        "night-icon": "night-raincloud"
-    },
-    {
-        "group": "6xx",
-        "day-icon": "day-snowcloud",
-        "night-icon": "night-snowcloud"
-    },
-    {
-        "group": "7xx",
-        "day-icon": "day-partlycloudy",
-        "night-icon": "night-partlycloudy"
-    },
-    {
-        "group": "800",
-        "day-icon": "day-clearsky",
-        "night-icon": "night-clearsky"
-    },
-    {
-        "group": "80x",
-        "day-icon": "day-partlycloudy",
-        "night-icon": "night-partlycloudy"
-    },
-    {
-        "group": "90x",
-        "day-icon": "cloudywithwind",
-        "night-icon": "cloudywithwind"
-    },
-    {
-        "group": "9xx",
-        "day-icon": "day-wind",
-        "night-icon": "night-wind"
+        "2xx":
+        {
+          "day-icon": "cl",
+          "night-icon": "mcl"
+        },
+        "3xx":
+        {
+          "day-icon": "pr",
+          "night-icon": "mcr"
+        },
+        "5xx":
+        {
+          "day-icon": "pr",
+          "night-icon": "mcr"
+        },
+        "6xx":
+        {
+          "day-icon": "cs",
+          "night-icon": "ms"
+        },
+        "7xx":
+        {
+          "day-icon": "c",
+          "night-icon": "c"
+        },
+        "800":
+        {
+          "day-icon": "m",
+          "night-icon": "s"
+        },
+        "80x":
+        {
+          "day-icon": "p",
+          "night-icon": "mc"
+        },
+        "90x":
+        {
+          "day-icon": "cw",
+          "night-icon": "cw"
+        },
+         "9xx":
+        {
+          "day-icon": "sw",
+          "night-icon": "mw"
+        }
     }
-    ]
 }
