@@ -47,14 +47,6 @@ weatherSucks.get("/api/getCond", function(req, res) {
     res.send(body);
   });
 });
-/*
-var $deferredNotesRequest = $.getJSON (
-    "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?",
-    { tags: img_tags,
-      tagmode: "any",
-      format: "json"
-    });
-*/
 
 //json get route - update for mongo
 // jsonApp.get("/notes.json", function(req, res) {

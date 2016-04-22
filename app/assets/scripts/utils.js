@@ -129,51 +129,66 @@ function pickType(weather){
 
 //TODO Add it in promise chain in theweathersucks.js
 //TODO Decide where to concat the entire iconFile url (here or in thetheweathersucks.js)
-function mapIcons(code){
-  var desired;
-  var iconFile;
-  $.getJSON("/docs/weatherMap.json").then(
-  function(json){
-    var first = code.slice(0,1);
-    switch (true) {
-      case first == "2":
-        desired = json["2xx"];
+function idIconMap(weather){
+  var code = (weather.id || null) + "";
+
+  if (code.length != 3) {
+    console.error("failed");
+    return false;
+    //return mapIconFail(stub);
+    //varx = stub;
+  }
+
+  var match, iconPath;
+
+  $.getJSON("/assets/docs/codeIconMappings.json").then(
+  function(res){
+    var prefix = code.charAt(0);
+    switch (prefix) {
+      case "2":
+        match = res["2xx"];
         break;
-      case first == "3":
-        desired = json["3xx"];
+      case "3":
+        match = res["3xx"];
         break;
-      case first == "5":
-        desired = json["5xx"];
+      case "5":
+        match = res["5xx"];
         break;
-      case first == "6":
-        desired = json["6xx"];
+      case "6":
+        match = res["6xx"];
         break;
-      case first == "7":
-        desired = json["7xx"];
+      case "7":
+        match = res["7xx"];
         break;
-      case code == "800":
-        desired = json["800"];
+      case "8":
+        if (code == 800) {
+          match = res["800"];
+        } else {
+          match = res["80x"];
+        }
         break;
-      case first == "8" && code !== "800":
-        desired = json["80x"];
+      case "9":
+        if (code.charAt(1) == 0) {
+          match = res["90x"];
+        } else {
+          match = res["9xx"];
+        }
         break;
-      case first == "9" && code.slice(0,2) == "0":
-        desired = json["90x"];
-        break;
-      case first == "9" && code.slice(0,2) != "0":
-        desired = json["9xx"];
-        break;
+      default:
+        console.error("failed");
+        return false;
+        //return mapIconFail(stub);
+        //varx = stub;
     }
     currentTime = new Date();
     hours = currentTime.getHours();
-    switch (true) {
-      case hours < 7 || hours > 19:
-        iconFile = desired.nightIcon;
-        break;
-      case hours >= 7 || hours <= 19:
-        iconFile = desired.dayIcon;
-        break;
-    }
-    return iconFile;
+
+    if (hours < 7 || hours > 19)
+      icon = match.nightIcon;
+    else
+      icon = match.dayIcon;
+
+    console.log (icon);
+    return icon;
   });
 }
