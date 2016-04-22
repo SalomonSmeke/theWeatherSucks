@@ -21,8 +21,12 @@ function load(){
     console.log("Location conversion requested for: Lat " + lat + " Lon " + lon);
     var deferredR = $.getJSON("/api/getLoc?lat=" + lat + "&lon=" + lon);
     deferredR.then(
-      function(value){update(zipParse(response)},
-      function(reason){locFail(reason)}));
+      function(value){
+        update(zipParse(value))
+      },
+      function(reason){
+        locFail(reason)
+      });
   }
 
   function locFail(error) {
