@@ -1,7 +1,6 @@
 function load(){
   "use strict";
 
-
   function getLocation() {
     console.log("Location Request Started...")
     var geoOptions = {
@@ -44,7 +43,7 @@ function load(){
       function(value){weather = condFetchSucc(value)},
       function(reason){weather = condFetchFail(reason)}
     );
-    
+
     var worseWeather;
 
     // getWorseConditions(); //ASYNC D

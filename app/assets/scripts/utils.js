@@ -71,6 +71,7 @@ function weatherParse(value){
       temp = value.main.temp;
       tempMin = value.main.temp_min;
       tempMax = value.main.temp_max;
+      humidity = value.main.humidity;
     } else {
       flag = true;
     }
@@ -113,5 +114,16 @@ function condFetchFail(reason){
 }
 
 function pickType(weather){
-
+  var temp = weather.temp;
+  var type;
+  if (temp <= 8){
+    type = conditionsLookup.cold;
+  }
+  if (temp >= 28 || (temp >= 25 && weather.temp.humidity >= 80)) {
+    type = conditionsLookup.warm;
+  }
+  if (!type){
+    type = conditionsLookup.neutral;
+  }
+  return type;
 }
