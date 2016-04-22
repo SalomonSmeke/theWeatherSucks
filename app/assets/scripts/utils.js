@@ -126,3 +126,54 @@ function pickType(weather){
   console.log("hey now... it looks fine down there");
   return conditionsLookup.neutral;
 }
+
+//TODO Add it in promise chain in theweathersucks.js
+//TODO Decide where to concat the entire iconFile url (here or in thetheweathersucks.js)
+function mapIcons(code){
+  var desired;
+  var iconFile;
+  $.getJSON("/docs/weatherMap.json").then(
+  function(json){
+    var first = code.slice(0,1);
+    switch (true) {
+      case first == "2":
+        desired = json["2xx"];
+        break;
+      case first == "3":
+        desired = json["3xx"];
+        break;
+      case first == "5":
+        desired = json["5xx"];
+        break;
+      case first == "6":
+        desired = json["6xx"];
+        break;
+      case first == "7":
+        desired = json["7xx"];
+        break;
+      case code == "800":
+        desired = json["800"];
+        break;
+      case first == "8" && code !== "800":
+        desired = json["80x"];
+        break;
+      case first == "9" && code.slice(0,2) == "0":
+        desired = json["90x"];
+        break;
+      case first == "9" && code.slice(0,2) != "0":
+        desired = json["9xx"];
+        break;
+    }
+    currentTime = new Date();
+    hours = currentTime.getHours();
+    switch (true) {
+      case hours < 7 || hours > 19:
+        iconFile = desired.nightIcon;
+        break;
+      case hours >= 7 || hours <= 19:
+        iconFile = desired.dayIcon;
+        break;
+    }
+    return iconFile;
+  });
+}

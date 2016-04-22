@@ -1,50 +1,47 @@
 {
-    "weatherMap":
-    {
         "2xx":
         {
-          "day-icon": "cl",
-          "night-icon": "mcl"
+          "dayIcon": "cl",
+          "nightIcon": "mcl"
         },
         "3xx":
         {
-          "day-icon": "pr",
-          "night-icon": "mcr"
+          "dayIcon": "pr",
+          "nightIcon": "mcr"
         },
         "5xx":
         {
-          "day-icon": "pr",
-          "night-icon": "mcr"
+          "dayIcon": "pr",
+          "nightIcon": "mcr"
         },
         "6xx":
         {
-          "day-icon": "cs",
-          "night-icon": "ms"
+          "dayIcon": "cs",
+          "nightIcon": "ms"
         },
         "7xx":
         {
-          "day-icon": "c",
-          "night-icon": "c"
+          "dayIcon": "c",
+          "nightIcon": "c"
         },
         "800":
         {
-          "day-icon": "m",
-          "night-icon": "s"
+          "dayIcon": "m",
+          "nightIcon": "s"
         },
         "80x":
         {
-          "day-icon": "p",
-          "night-icon": "mc"
+          "dayIcon": "p",
+          "nightIcon": "mc"
         },
         "90x":
         {
-          "day-icon": "cw",
-          "night-icon": "cw"
+          "dayIcon": "cw",
+          "nightIcon": "cw"
         },
          "9xx":
         {
-          "day-icon": "sw",
-          "night-icon": "mw"
+          "dayIcon": "sw",
+          "nightIcon": "mw"
         }
-    }
 }
