@@ -22,6 +22,31 @@ if (!Math.round10) {
   };
 }
 
+function getCssValuePrefix() {
+    var rtrnVal = '';//default to standard syntax
+    var prefixes = ['-o-', '-ms-', '-moz-', '-webkit-'];
+
+    // Create a temporary DOM object for testing
+    var dom = document.createElement('div');
+
+    for (var i = 0; i < prefixes.length; i++)
+    {
+        // Attempt to set the style
+        dom.style.background = prefixes[i] + 'linear-gradient(#000000, #ffffff)';
+
+        // Detect if the style was successfully set
+        if (dom.style.background)
+        {
+            rtrnVal = prefixes[i];
+        }
+    }
+
+    dom = null;
+    delete dom;
+
+    return rtrnVal;
+}
+
 function zipParse(res) {
   var state, city, zip;
 
@@ -127,17 +152,10 @@ function pickType(weather){
   return conditionsLookup.neutral;
 }
 
-//TODO Add it in promise chain in theweathersucks.js
-//TODO Decide where to concat the entire iconFile url (here or in thetheweathersucks.js)
 function idIconMap(weather){
   var code = (weather.id || null) + "";
 
-  if (code.length != 3) {
-    console.error("failed");
-    return false;
-    //return mapIconFail(stub);
-    //varx = stub;
-  }
+  if (code.length != 3) return idIconMapFail(" icon code wrong length or null.");
 
   var match, iconPath;
 
@@ -175,10 +193,7 @@ function idIconMap(weather){
         }
         break;
       default:
-        console.error("failed");
-        return false;
-        //return mapIconFail(stub);
-        //varx = stub;
+        return idIconMapFail(" no match for code.");
     }
     currentTime = new Date();
     hours = currentTime.getHours();
@@ -188,7 +203,12 @@ function idIconMap(weather){
     else
       icon = match.dayIcon;
 
-    console.log (icon);
+    console.log ("Id icon mapping success: " + icon);
     return icon;
   });
+}
+
+function idIconMapFail(error){
+  console.error("Id icon map error " + error);
+  return idIconMap(defaultWeather);
 }

@@ -58,7 +58,7 @@ function load(){
         $deferredWorker1.resolve();
         $deferredWorker1.then(
           function(value){
-            // setPallete(conditionsRLookup[type]);
+            setPallete(conditionsRLookup[type]);
             // setGreeting(conditionsRLookup[type]);
             // setIcon(weather);
             // setLocation(loc);
