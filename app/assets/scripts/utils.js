@@ -29,6 +29,7 @@ function weatherParse(value){
   var id, type, desc, temp, tempMin, tempMax, humidity, wind;
 
   var flag = false;
+
   if (value.weather !== undefined) {
     if (value.weather[0].main !== undefined && value.weather[0].description !== undefined && value.weather[0].id !== undefined) {
       id = value.weather[0].id;
@@ -68,4 +69,20 @@ function weatherParse(value){
   } else {
     return {id: id, type: type, desc: desc, temp: temp, tempMin: tempMin, tempMax: tempMax, humidity: humidity, wind: wind, fetched: true};
   }
+}
+
+function condFetchSucc(value){
+    console.log("Response from server received.");
+    weather = weatherParse(value);
+    if (weather){
+      console.log("Weather correctly fetched: " + JSON.stringify(weather));
+    } else {
+      weather = defaultWeather;
+      console.error("Weather fetch failed, using default: " + JSON.stringify(weather));
+    }
+}
+
+function condFetchFail(reason){
+  console.error("frick" + reason);
+  weather = defaultWeather;
 }

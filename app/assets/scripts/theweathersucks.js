@@ -34,23 +34,9 @@ function load(){
 
     var $deferredConditionsRequest = $.getJSON("/api/getCond?zip=" + loc.zip + "," + loc.country);
 
-    $deferredConditionsRequest.then(function(value) {
-      console.log("Response from server received.");
-
-      weather = weatherParse(value);
-
-      if (weather){
-        console.log("Weather correctly fetched: " + JSON.stringify(weather));
-      } else {
-        weather = defaultWeather;
-        console.error("Weather fetch failed, using default: " + JSON.stringify(weather));
-      }
-    }, function(reason) {
-
-      console.error("frick" + reason);
-      weather = defaultWeather;
-      
-    });
+    $deferredConditionsRequest.then(
+      function(value){condFetchSucc(value)},
+      function(reason){condFetchFail(reason)});
 
     var worseWeather;
 
