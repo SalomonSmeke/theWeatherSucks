@@ -18,10 +18,11 @@ function load(){
   function locToZip(position) {
     var lat = (position.coords.latitude || "0") + "";
     var lon = (position.coords.longitude || "0") + "";
-    console.log("Location conversion requested for: Lat " + lat + " Lon " + lon)
-    var deferredR = $.getJSON("/api/getLoc?lat=" + lat + "&lon=" + lon , function (response) { //TODO error should send to locFail
-      update(zipParse(response));
-    });
+    console.log("Location conversion requested for: Lat " + lat + " Lon " + lon);
+    var deferredR = $.getJSON("/api/getLoc?lat=" + lat + "&lon=" + lon);
+    deferredR.then(
+      function(value){update(zipParse(response)},
+      function(reason){locFail(reason)}));
   }
 
   function locFail(error) {
