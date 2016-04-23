@@ -58,7 +58,7 @@ function load(){
           function(value){
             setPallete(conditionsRLookup[type]);
             setGreeting(conditionsRLookup[type]);
-            // setIcon(weather);
+            setIcon(weather);
             setLocation(loc);
             setSmileys(weather, type);
             // placeTemperature(weather);

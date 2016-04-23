@@ -60,8 +60,23 @@ function setSmileys(weather, type){
 
 function setGreeting(type){
   var greet;
-  var p = $.getJSON("/assets/docs/" + type + "Greetings.json").then(
+  $.getJSON("/assets/docs/" + type + "Greetings.json").then(
   function(res){
     document.getElementById('message').innerHTML = res.values[Math.floor((Math.random() * res.values.length))];
   });
+}
+
+function setIcon(weather){
+  if (!weather) {
+    idIconMapFail("no weather found");
+  }
+  var w = weather;
+  $.getJSON("assets/docs/codeIconMappings.json").then(
+    function (res){
+      var iconName = idIconMap(w, res);
+      var iconURL = 'assets/images/looseIcons/' + iconName + '.png';
+      var iconHTML = '<img style="max-width: 200px; max-height=150px" src=' + '"' + iconURL + '"' + '>';
+      document.getElementById('iconSpot').innerHTML = iconHTML;
+    }
+  );
 }

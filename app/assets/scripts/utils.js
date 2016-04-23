@@ -152,65 +152,58 @@ function pickType(weather){
   return conditionsLookup.neutral;
 }
 
-function idIconMap(weather){
-  var code = (weather.id || null) + "";
+function idIconMap(weather, res){
+  var match;
+  var code = weather.id + "";
+  var json = res;
+  var prefix = code.charAt(0);
+  switch (prefix) {
+    case "2":
+      match = json["2xx"];
+      break;
+    case "3":
+      match = json["3xx"];
+      break;
+    case "5":
+      match = json["5xx"];
+      break;
+    case "6":
+      match = json["6xx"];
+      break;
+    case "7":
+      match = json["7xx"];
+      break;
+    case "8":
+      if (code == 800) {
+        match = json["800"];
+      } else {
+        match = json["80x"];
+      }
+      break;
+    case "9":
+      if (code.charAt(1) == 0) {
+        match = json["90x"];
+      } else {
+        match = json["9xx"];
+      }
+      break;
+    default:
+      return idIconMapFail("no match for code.");
+  }
+  currentTime = new Date();
+  hours = currentTime.getHours();
 
-  if (code.length != 3) return idIconMapFail(" icon code wrong length or null.");
-
-  var match, iconPath;
-
-  $.getJSON("/assets/docs/codeIconMappings.json").then(
-  function(res){
-    var prefix = code.charAt(0);
-    switch (prefix) {
-      case "2":
-        match = res["2xx"];
-        break;
-      case "3":
-        match = res["3xx"];
-        break;
-      case "5":
-        match = res["5xx"];
-        break;
-      case "6":
-        match = res["6xx"];
-        break;
-      case "7":
-        match = res["7xx"];
-        break;
-      case "8":
-        if (code == 800) {
-          match = res["800"];
-        } else {
-          match = res["80x"];
-        }
-        break;
-      case "9":
-        if (code.charAt(1) == 0) {
-          match = res["90x"];
-        } else {
-          match = res["9xx"];
-        }
-        break;
-      default:
-        return idIconMapFail(" no match for code.");
-    }
-    currentTime = new Date();
-    hours = currentTime.getHours();
-
-    if (hours < 7 || hours > 19)
-      icon = match.nightIcon;
-    else
-      icon = match.dayIcon;
-
-    console.log ("Id icon mapping success: " + icon);
-    return icon;
-  });
+  if (hours < 7 || hours > 19)
+    icon = match.nightIcon;
+  else
+    icon = match.dayIcon;
+  console.log ("Id icon mapping success: " + icon);
+  return icon;
 }
 
 function idIconMapFail(error){
   console.error("Id icon map error " + error);
-  return idIconMap(defaultWeather);
+  return getIcon(defaultWeather);
 }
 
 function windRating(wind,type){
