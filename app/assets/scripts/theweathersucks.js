@@ -84,6 +84,13 @@ function load(){
         //drawMetricsD3();
       }
     );
+
+    $.when($deferredWorker1,$deferredWorker2).done(
+      function(args){
+        $(".hidemebro").hide();
+        window.scrollTo(0, document.getElementById("page_1").offsetTop);
+      }
+    );
   }
 
    getLocation();
