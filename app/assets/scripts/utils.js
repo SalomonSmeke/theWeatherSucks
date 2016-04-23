@@ -212,3 +212,51 @@ function idIconMapFail(error){
   console.error("Id icon map error " + error);
   return idIconMap(defaultWeather);
 }
+
+function windRating(wind,type){
+  wind = Math.round(wind / 5);
+  if (wind > 5) wind = 5;
+  var char;
+  switch (type){
+    case 1:
+      char = "(";
+      break;
+    case 2:
+      char = "O";
+      break;
+    case 3:
+      if (wind = 5) {
+        char = "O";
+      } else {
+        char = ")";
+      }
+      break;
+  }
+  var out = "";
+  for (var i = 0; i < wind; i++){
+    out += char;
+  }
+  return out;
+}
+
+function humidityRating(humidity,type){
+  humidity = Math.round(humidity / 20);
+  if (humidity > 5) humidity = 5;
+  var char;
+  switch (type){
+    case 1:
+      char = ")";
+      break;
+    case 2:
+      char = "|";
+      break;
+    case 3:
+      char = "(";
+      break;
+  }
+  var out = "";
+  for (var i = 0; i < humidity; i++){
+    out += char;
+  }
+  return out;
+}

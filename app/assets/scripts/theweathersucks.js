@@ -48,8 +48,6 @@ function load(){
       function(reason){type = pickType(weather)}
     );
 
-    //set
-
     var $deferredWorker1 = $.Deferred();
     var $deferredWorker2 = $.Deferred();
 
@@ -61,9 +59,8 @@ function load(){
             setPallete(conditionsRLookup[type]);
             // setGreeting(conditionsRLookup[type]);
             // setIcon(weather);
-            console.log(loc);
             setLocation(loc);
-            // setSmileys(weather);
+            setSmileys(weather, type);
             // placeTemperature(weather);
           }
         )

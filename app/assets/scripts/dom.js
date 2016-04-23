@@ -45,3 +45,15 @@ function setLocation(loc){
 
   document.getElementById('location').innerHTML = date + brk + loc.city + ", " + loc.state + brk + loc.zip;
 }
+
+function setSmileys(weather, type){
+  if (!weather || !type) {
+    weather = defaultWeather;
+    type = pickType(weather);
+    console.error("Failed to set smileys on DOM due to null value");
+  }
+  var wind = windRating(weather.wind,type);
+  var humidity = humidityRating(weather.humidity,type);
+
+  document.getElementById('sMleys').innerHTML = ":" + wind + "<br />:" + humidity + "<br />";
+}
