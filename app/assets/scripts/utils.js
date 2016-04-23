@@ -242,16 +242,29 @@ function windRating(wind,type){
 function humidityRating(humidity,type){
   humidity = Math.round(humidity / 20);
   if (humidity > 5) humidity = 5;
+  if (humidity === 0) humidity = 1;
   var char;
   switch (type){
     case 1:
-      char = ")";
+      if (humidity<3){
+        char = "(";
+      } else {
+        char = ")";
+      }
       break;
     case 2:
-      char = "|";
+      if (humidity<2 || humidity>4){
+        char = "(";
+      } else {
+        char = "|";
+      }
       break;
     case 3:
-      char = "(";
+      if (humidity<2 || humidity>3){
+        char = "(";
+      } else {
+        char = ")";
+      }
       break;
   }
   var out = "";
