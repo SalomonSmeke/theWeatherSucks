@@ -57,3 +57,11 @@ function setSmileys(weather, type){
 
   document.getElementById('sMleys').innerHTML = ":" + wind + "<br />:" + humidity + "<br />";
 }
+
+function setGreeting(type){
+  var greet;
+  var p = $.getJSON("/assets/docs/" + type + "Greetings.json").then(
+  function(res){
+    document.getElementById('message').innerHTML = res.values[Math.floor((Math.random() * res.values.length))];
+  });
+}

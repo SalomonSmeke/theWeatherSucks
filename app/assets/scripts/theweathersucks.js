@@ -57,7 +57,7 @@ function load(){
         $deferredWorker1.then(
           function(value){
             setPallete(conditionsRLookup[type]);
-            // setGreeting(conditionsRLookup[type]);
+            setGreeting(conditionsRLookup[type]);
             // setIcon(weather);
             setLocation(loc);
             setSmileys(weather, type);
