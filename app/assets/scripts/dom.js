@@ -67,7 +67,7 @@ function setGreeting(type){
 }
 
 function setIcon(weather){
-  var code = (weather.id || "");
+  var code = (weather.id || null) + "";
   if (code.length != 3) {
     console.error("invlaid code for set icon, using default.");
     code = defaultWeather.id;
