@@ -33,3 +33,15 @@ function setPallete(typeStr){
     console.log(setGradients(colorSet[color], document.getElementById(('page_' + color))));
   }
 }
+
+function setLocation(loc){
+  if (!loc) {
+    loc = defaultLoc;
+    console.error("Failed to set location on DOM due to null location");
+  }
+  var d = new Date();
+  var date = d.getDate() + " " + months[d.getMonth()] + " " + d.getFullYear();
+  var brk = "<br />";
+
+  document.getElementById('location').innerHTML = date + brk + loc.city + ", " + loc.state + brk + loc.zip;
+}
