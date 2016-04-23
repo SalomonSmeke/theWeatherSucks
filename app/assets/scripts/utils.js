@@ -152,9 +152,8 @@ function pickType(weather){
   return conditionsLookup.neutral;
 }
 
-function idIconMap(weather, res){
+function idIconMap(code, res){
   var match;
-  var code = weather.id + "";
   var json = res;
   var prefix = code.charAt(0);
   switch (prefix) {
@@ -203,7 +202,7 @@ function idIconMap(weather, res){
 
 function idIconMapFail(error){
   console.error("Id icon map error " + error);
-  return getIcon(defaultWeather);
+  return idIconMap(defaultWeather);
 }
 
 function windRating(wind,type){

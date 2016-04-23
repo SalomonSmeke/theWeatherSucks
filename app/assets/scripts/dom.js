@@ -67,15 +67,16 @@ function setGreeting(type){
 }
 
 function setIcon(weather){
-  if (!weather) {
-    idIconMapFail("no weather found");
+  var code = (weather.id || "");
+  if (code.length != 3) {
+    console.error("invlaid code for set icon, using default.");
+    code = defaultWeather.id;
   }
-  var w = weather;
   $.getJSON("assets/docs/codeIconMappings.json").then(
     function (res){
-      var iconName = idIconMap(w, res);
+      var iconName = idIconMap(code, res);
       var iconURL = 'assets/images/looseIcons/' + iconName + '.png';
-      var iconHTML = '<img style="max-width: 200px; max-height=150px" src=' + '"' + iconURL + '"' + '>';
+      var iconHTML = '<img style="max-width: 200px; max-height=150px" src="' + iconURL + '">';
       document.getElementById('iconSpot').innerHTML = iconHTML;
     }
   );
