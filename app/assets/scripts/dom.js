@@ -55,5 +55,5 @@ function setSmileys(weather, type){
   var wind = windRating(weather.wind,type);
   var humidity = humidityRating(weather.humidity,type);
 
-  document.getElementById('sMleys').innerHTML = wind + "<br />" + humidity + "<br />";
+  document.getElementById('sMleys').innerHTML = ":" + wind + "<br />:" + humidity + "<br />";
 }
