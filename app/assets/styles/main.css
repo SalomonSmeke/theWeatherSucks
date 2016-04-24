@@ -215,6 +215,11 @@ h1{
   min-width: 520px;
 }
 
+#marker{
+  position: absolute;
+  font-size: 1.3em;
+}
+
 #bar{
   min-width: 500px;
 }

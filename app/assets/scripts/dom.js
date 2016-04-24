@@ -102,8 +102,8 @@ function placeTemperature(weatherIn){
   //normalize to 0
   max-=min;
   curr-=min;
-  min-=min;
 
-  var placement = curr * document.getElementById("bar").width/max + document.getElementById("bar").offsetLeft;
-  console.log("temp should be at: " + placement);
+  var marker = document.getElementById("marker");
+  marker.offsetLeft = curr * document.getElementById("bar").scrollWidth/max;
+  marker.top = 10;
 }
