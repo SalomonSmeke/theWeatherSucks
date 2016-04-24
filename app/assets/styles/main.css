@@ -9,6 +9,14 @@ body,html,section,main{
   font-size: 100%;
 }
 
+.ltext{
+  text-align: left;
+}
+
+.rtext{
+  text-align: right;
+}
+
 #guards{
   height: 100%;
   position: fixed;
@@ -114,8 +122,16 @@ h1{
   width: 80%;
 }
 
+.col-7{
+  width: 57%;
+}
+
 .col-6{
   width: 49%;
+}
+
+.col-6-full{
+  width: 50%;
 }
 
 .col-5{
@@ -190,6 +206,15 @@ h1{
 
 #barContainer{
   min-height: 100px;
+}
+
+.barLabels{
+  width: 59%;
+  min-width: 520px;
+}
+
+#bar{
+  min-width: 500px;
 }
 
 #location{

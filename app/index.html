@@ -68,9 +68,15 @@
           <div class="row container">
             <h1 id="message" class="col-12">??</h1>
             <span id="barContainer" class="col-12 container">
-              <object id="bar" type="image/svg+xml" data="assets/svg/tempBar.svg" height="3">
-                <param name="src" value="assets/svg/tempBar.svg"> <!-- IE Fallback -->
-              </object>
+              <div id=barLabelGroup>
+                <object id="bar" type="image/svg+xml" data="assets/svg/tempBar.svg" class="col-7">
+                  <param name="src" value="assets/svg/tempBar.svg"> <!-- IE Fallback -->
+                </object>
+                <div class="container barLabels">
+                  <span class="col-6-full ltext" style="color: #2f3192; font-size: 1.3em;">lo</span>
+                  <span class="col-6-full rtext" style="color: #ed1c24; font-size: 1.3em;">hi</span>
+                </div>
+              </div>
             </span>
             <span class="col-3" id="location">??<br />??<br />??</span>
             <span class="col-6" id='iconSpot'>??</span>
@@ -100,6 +106,7 @@
     </main>
     <!-- js scripts... -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <script type="text/javascript" src="assets/scripts/static.js"></script>
     <script type="text/javascript" src="assets/scripts/utils.js"></script>
     <script type="text/javascript" src="assets/scripts/dom.js"></script>
