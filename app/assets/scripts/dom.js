@@ -76,8 +76,34 @@ function setIcon(weather){
     function (res){
       var iconName = idIconMap(code, res);
       var iconURL = 'assets/images/looseIcons/' + iconName + '.png';
-      var iconHTML = '<img style="max-width: 200px; max-height=150px" src="' + iconURL + '">';
+      var iconHTML = '<img style="max-height: 150px; max-width:200px;" src="' + iconURL + '">';
       document.getElementById('iconSpot').innerHTML = iconHTML;
     }
   );
+}
+
+function placeTemperature(weatherIn){
+  var w = weatherIn || defaultWeather;
+  var min = w.tempMin || null;
+  var max = w.tempMax || null;
+  var curr = w.temp || null;
+
+  if (min===null || max===null || curr===null || min>max){
+    w = defaultWeather;
+    min = w.tempMin;
+    max = w.tempMax;
+    curr = w.temp;
+  }
+
+  if (min==max){
+    min--;
+    max++;
+  }
+  //normalize to 0
+  max-=min;
+  curr-=min;
+  min-=min;
+
+  var placement = curr * document.getElementById("bar").width/max + document.getElementById("bar").offsetLeft;
+  console.log("temp should be at: " + placement);
 }

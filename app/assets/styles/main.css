@@ -11,10 +11,12 @@ body,html,section,main{
 
 .ltext{
   text-align: left;
+  font-size: 1.3em;
 }
 
 .rtext{
   text-align: right;
+  font-size: 1.3em;
 }
 
 #guards{
@@ -205,7 +207,7 @@ h1{
 }
 
 #barContainer{
-  min-height: 100px;
+  height: 120px;
 }
 
 .barLabels{

@@ -61,7 +61,7 @@ function load(){
             setIcon(weather);
             setLocation(loc);
             setSmileys(weather, type);
-            // placeTemperature(weather);
+            placeTemperature(weather);
           }
         )
       }
