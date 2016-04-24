@@ -92,9 +92,8 @@ function load(){
       }
     );
   }
-
-   getLocation();
-  // bindInteractivity();
+  getLocation();
+  bindInteractivity();
 }
 
 
