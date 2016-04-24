@@ -93,7 +93,6 @@ function load(){
     );
   }
   getLocation();
-  bindInteractivity();
 }
 
 

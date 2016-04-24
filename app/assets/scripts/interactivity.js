@@ -3,5 +3,6 @@ function bindInteractivity(){
 }
 
 function bindZip(){
+  
   alert("not yet implemented");
 }
