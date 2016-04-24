@@ -89,6 +89,7 @@ function placeTemperature(weatherIn){
   var curr = w.temp || null;
 
   if (min===null || max===null || curr===null || min>max){
+    console.error("Provided temperatures invalid");
     w = defaultWeather;
     min = w.tempMin;
     max = w.tempMax;
