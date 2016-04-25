@@ -207,6 +207,7 @@ function idIconMapFail(error){
 
 function windRating(wind,type){
   wind = Math.round(wind / 5);
+  if (wind === 0) wind = 1;
   if (wind > 5) wind = 5;
   var char;
   switch (type){
