@@ -115,3 +115,7 @@ function placeTemperature(weatherIn){
   //OK. PLS GIVE US AN A.
   //BYE.
 }
+
+function worseLocation(location){
+
+}

@@ -24,7 +24,7 @@ function ChosenOfRNGesus(type,targetTemps) {
     function (res){
       res = weatherParse(res);
       if (comparator(targetTemps,res.temp)){
-        printMyDataYouBitch(res);
+        dataPrint(res);
       } else {
         lookups.splice(indexSearch,1);
         indexSearch = getRNGesus(lookups);
@@ -34,7 +34,7 @@ function ChosenOfRNGesus(type,targetTemps) {
           function (res){
             res = weatherParse(res);
             if (comparator(targetTemps,res.temp)){
-              printMyDataYouBitch(res);
+              dataPrint(res,curr);
             } else {
               lookups.splice(indexSearch,1);
               indexSearch = getRNGesus(lookups);
@@ -44,7 +44,7 @@ function ChosenOfRNGesus(type,targetTemps) {
                 function (res){
                   res = weatherParse(res);
                   if (comparator(targetTemps,res.temp)){
-                    printMyDataYouBitch(res);
+                    dataPrint(res,curr);
                   } else {
                     lookups.splice(indexSearch,1);
                     indexSearch = getRNGesus(lookups);
@@ -54,7 +54,7 @@ function ChosenOfRNGesus(type,targetTemps) {
                       function (res){
                         res = weatherParse(res);
                         if (comparator(targetTemps,res.temp)){
-                          printMyDataYouBitch(res);
+                          dataPrint(res,curr);
                         } else {
                           lookups.splice(indexSearch,1);
                           indexSearch = getRNGesus(lookups);
@@ -64,9 +64,9 @@ function ChosenOfRNGesus(type,targetTemps) {
                             function (res) {
                               res = weatherParse(res);
                               if (comparator(targetTemps,res.temp)){
-                                printMyDataYouBitch(res);
+                                dataPrint(res,curr);
                               } else {
-                                printMyDataYouBitch(defaultWeathers);
+                                dataPrint(defaultWeathers,defaultWeathers);
                               }
                             }
                           );
@@ -88,7 +88,8 @@ function getRNGesus(arrayIn) {
   return Math.floor((Math.random() * arrayIn.length));
 }
 
-function printMyDataYouBitch(data) {
+function dataPrint(data,location) {
+  worseLocation(location);
   console.log(data);
 }
 
