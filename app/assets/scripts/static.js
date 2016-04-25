@@ -39,8 +39,8 @@ var pollingLocations =
     ]
   };
 
-var sunCopOut = {tempMin: 5503, tempMax: 5505, temp: 5504, copOut: true};
-var moonCopOut = {tempMin: -154, tempMax: -152, temp: -151, copOut: true};
+var sunCopOut = {name: "THE SUN", tempMin: 5503, tempMax: 5505, temp: 5504, copOut: true};
+var moonCopOut = {name: "THE DARK SIDE OF THE MOON", tempMin: -154, tempMax: -152, temp: -151, copOut: true};
 
 var locks = [
   Object.freeze(defaultLoc),

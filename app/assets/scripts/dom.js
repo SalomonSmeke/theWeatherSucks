@@ -116,6 +116,10 @@ function placeTemperature(weatherIn){
   //BYE.
 }
 
-function worseLocation(location){
-
+function worseLocation(location,bool){
+  if (bool){
+    document.getElementById('worseWeather').innerHTML = "<strong>BUT HAVE YOU SEEN " + location.name + ", " + location.locale + "?";
+  } else {
+    document.getElementById('worseWeather').innerHTML = "<strong>BUT HAVE YOU SEEN " + location.name + "?";
+  }
 }

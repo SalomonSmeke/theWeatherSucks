@@ -92,22 +92,19 @@ function load(val){
           }
         );
       }
-    ).then(
-      function(args) {
-        //getMetrics();
-        //drawMetricsD3();
-      }
     );
 
     $.when($deferredWorker1,$deferredWorker2).done(
       function(args){
+        ChosenOfRNGesus(type,weather.temp);
+        //getMetrics();
+        //drawMetricsD3();
         $(".hidemebro").hide();
         window.scrollTo(0, document.getElementById("page_1").offsetTop);
       }
     );
   }
   if (isNumber(val)){
-    debugger;
     zipToFullLoc(val);
   } else {
     getLocation();

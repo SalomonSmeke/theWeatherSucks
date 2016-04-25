@@ -89,8 +89,10 @@ function getRNGesus(arrayIn) {
 }
 
 function dataPrint(data,location) {
-  worseLocation(location);
+  if (location.copOut){
+    worseLocation(location,false);
+  } else {
+    worseLocation(location,true);
+  }
   console.log(data);
 }
-
-ChosenOfRNGesus(1,10);
