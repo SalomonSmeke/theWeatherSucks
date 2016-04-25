@@ -51,8 +51,8 @@ weatherSucks.get("/api/getCond", function(req, res) {
 weatherSucks.get("/api/getCondLatLon", function(req, res) {
   var lat = (req.query.lat || "14") + "";
   var lon = (req.query.lon || "40") + "";
-  console.log("Weather requested at: " + lat + "(lat)" + long + "(long)");
-  req = "http://api.openweathermap.org/data/2.5/weather?&lat=" lat + "&lon=" + lon + "&appid=" + process.env.WEATHER_API;
+  console.log("Weather requested at: " + lat + "(lat)" + lon + "(long)");
+  req = "http://api.openweathermap.org/data/2.5/weather?&lat=" + lat + "&lon=" + lon + "&appid=" + process.env.WEATHER_API;
   request.get(req, function(error, response, body){
     if (error) console.error(error);
     console.log(body);
