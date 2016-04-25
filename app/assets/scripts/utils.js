@@ -265,3 +265,9 @@ function humidityRating(humidity,type){
   }
   return out;
 }
+
+function isNumber(numberMaybe){
+  var parsed = parseInt(numberMaybe);
+  if (isNaN(parsed)) return false;
+  return parsed;
+}

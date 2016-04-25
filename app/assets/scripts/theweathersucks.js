@@ -1,4 +1,4 @@
-function load(){
+function load(val){
   "use strict";
 
   function getLocation() {
@@ -28,6 +28,18 @@ function load(){
       });
   }
 
+  function zipToFullLoc(zip) {
+    console.log("Location conversion requested for: " + zip);
+    var deferredR = $.getJSON("/api/getLocZip?zip=" + zip);
+    deferredR.then(
+      function(value){
+        update(zipParse(value))
+      },
+      function(reason){
+        locFail(reason)
+      });
+  }
+
   function locFail(error) {
     console.error(error);
     update (defaultLoc);
@@ -35,7 +47,9 @@ function load(){
 
   function update(loc) {
     var weather,type;
-
+    if (!loc.fetched){
+      alert("Invalid location!");
+    }
     var $deferredConditionsRequest = $.getJSON("/api/getCond?zip=" + loc.zip + "," + loc.country);
 
     $deferredConditionsRequest
@@ -92,7 +106,13 @@ function load(){
       }
     );
   }
-  getLocation();
+  if (isNumber(val)){
+    debugger;
+    zipToFullLoc(val);
+  } else {
+    getLocation();
+    bindInteractivity();
+  }
 }
 
 

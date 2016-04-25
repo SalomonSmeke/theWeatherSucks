@@ -37,6 +37,15 @@ weatherSucks.get("/api/getLoc", function(req, res) {
   }); //TODO: error handling.nd
 });
 
+weatherSucks.get("/api/getLocZip", function(req, res) {
+  var zip = (req.query.zip || 60660) + ""; //avoid exploits by casting to string
+  console.log("Location requested at: " + zip);
+  req = "https://maps.googleapis.com/maps/api/geocode/json?result_type=administrative_area_level_1|locality|postal_code&address=" + zip + "&key=" + process.env.GOOGLE_API;
+  request.get(req, function(error, response, body){
+    res.send(body);
+  }); //TODO: error handling.nd
+});
+
 weatherSucks.get("/api/getCond", function(req, res) {
   var zip = (req.query.zip || "60660,us") + "";
   console.log("Weather requested at: " + zip);
