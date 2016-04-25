@@ -106,7 +106,12 @@ function placeTemperature(weatherIn){
   max-=min;
   curr-=min;
 
-  var marker = document.getElementById("marker");
-  marker.offsetLeft = curr * document.getElementById("bar").scrollWidth/max;
-  marker.top = 10;
+  var bar = document.getElementById("bar");
+  var place = curr * bar.scrollWidth/max + bar.offsetLeft;
+  $("#marker").css('left', place);
+  //I JUST WANT YOU TO KNOW. Dr. Hayward. This SUCKED. LIKE. SO BAD.
+  //FOR SURE THE HARDEST PART OF OUR APPLICATION.
+  //LIKE. I DONT EVEN KNOW.
+  //OK. PLS GIVE US AN A.
+  //BYE.
 }
