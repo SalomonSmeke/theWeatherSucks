@@ -218,7 +218,7 @@ function windRating(wind,type){
       char = "O";
       break;
     case 3:
-      if (wind = 5) {
+      if (wind === 5) {
         char = "O";
       } else {
         char = ")";
