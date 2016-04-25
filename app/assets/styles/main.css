@@ -246,6 +246,9 @@ h1{
 }
 
 #page_2{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   /* For browsers that do not support gradients :( */
   background: #50418a;
   /* Safari 5.1 to 6.0 */
@@ -256,4 +259,10 @@ h1{
   background: -moz-repeating-linear-gradient(#1E8694, #50418a, #642687);
   /* Standard syntax */
   background: repeating-linear-gradient(#1E8694, #50418a, #642687);
+}
+#worseWeather{
+  height: 30%;
+}
+#d3stuff {
+  height: 70%;
 }

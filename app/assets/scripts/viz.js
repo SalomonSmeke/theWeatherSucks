@@ -25,3 +25,11 @@ var $deferredColdMetrics = $.getJSON("/api/getCondLatLon?lat=67&lon=133");
 var $deferredColdMetrics = $.getJSON("/api/getCondLatLon?lat=48&lon=93");
 var $deferredColdMetrics = $.getJSON("/api/getCondLatLon?lat=39&lon=105");
 var $deferredColdMetrics = $.getJSON("/api/getCondLatLon?lat=63&lon=10");
+
+
+d3.select(window).on('resize', resize);
+
+function resize() {
+
+
+}
