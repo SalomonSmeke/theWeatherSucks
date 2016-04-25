@@ -18,8 +18,29 @@ var colorSets = {
     ["E15549","e34e45","e54540","EE2B31"],
     ["EE2B31","642687"]
   ]};
-  
+
 var months = ["jan","feb","mar","apr","may","jun","jul","aug","sep","oct","nov","dec"];
+
+var pollingLocations =
+  {
+    cold: [
+      {name: "Yakutsk", locale: "Russia", lat: 62, lon: 129},
+      {name: "Verkhoyansk", locale: "Russia", lat: 67, lon: 133},
+      {name: "International Falls", locale: "Minnesota", lat: 48, lon: 93},
+      {name: "Fraser", locale: "Colorado", lat: 39, lon: 105},
+      {name: "Hell", locale: "Norway", lat: 63, lon: 10}
+    ],
+    warm: [
+      {name: "Dalol", locale: "Ethiopia", lat: 14, lon: 40},
+      {name: "Aziziya", locale: "Libya", lat: 32, lon: 13},
+      {name: "Atacama Desert", locale: "South America", lat: 24, lon: 69},
+      {name: "Death Valley", locale: "California", lat: 36, lon: 116},
+      {name: "Sahara Desert", locale: "Africa", lat: 23, lon: 13}
+    ]
+  };
+
+var sunCopOut = {tempMin: 5503, tempMax: 5505, temp: 5504, copOut: true};
+var moonCopOut = {tempMin: -154, tempMax: -152, temp: -151, copOut: true};
 
 var locks = [
   Object.freeze(defaultLoc),
@@ -27,5 +48,6 @@ var locks = [
   Object.freeze(conditionsLookup),
   Object.freeze(conditionsRLookup),
   Object.freeze(colorSets),
+  Object.freeze(pollingLocations),
   Object.freeze(months)
 ];
