@@ -88,6 +88,9 @@ function load(val){
         $deferredWorker2.resolve();
         $deferredWorker2.then(
           function(value){
+            ChosenOfRNGesus(type,weather.temp);
+            //getMetrics();
+            //drawMetricsD3();
             //getWorseConditions(weather);
           }
         );
@@ -96,9 +99,6 @@ function load(val){
 
     $.when($deferredWorker1,$deferredWorker2).done(
       function(args){
-        ChosenOfRNGesus(type,weather.temp);
-        //getMetrics();
-        //drawMetricsD3();
         $(".hidemebro").hide();
         window.scrollTo(0, document.getElementById("page_1").offsetTop);
       }
