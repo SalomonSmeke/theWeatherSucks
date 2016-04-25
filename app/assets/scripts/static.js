@@ -24,18 +24,18 @@ var months = ["jan","feb","mar","apr","may","jun","jul","aug","sep","oct","nov",
 var pollingLocations =
   {
     cold: [
-      {name: "Yakutsk", locale: "Russia", lat: 62, lon: 129},
-      {name: "Verkhoyansk", locale: "Russia", lat: 67, lon: 133},
-      {name: "International Falls", locale: "Minnesota", lat: 48, lon: 93},
-      {name: "Fraser", locale: "Colorado", lat: 39, lon: 105},
-      {name: "Hell", locale: "Norway", lat: 63, lon: 10}
+      {name: "Yakutsk", locale: "Russia", lat: 62.02, lon: 129.44},
+      {name: "Verkhoyansk", locale: "Russia", lat: 67.33, lon: 133.23},
+      {name: "Duluth", locale: "Minnesota", lat: 46.7867, lon: -92.1005},
+      {name: "Fraser", locale: "Colorado", lat: 39.5639, lon: -105.4848},
+      {name: "Hell", locale: "Norway", lat: 63.2640, lon: 10.5521}
     ],
     warm: [
-      {name: "Dalol", locale: "Ethiopia", lat: 14, lon: 40},
-      {name: "Aziziya", locale: "Libya", lat: 32, lon: 13},
-      {name: "Atacama Desert", locale: "South America", lat: 24, lon: 69},
-      {name: "Death Valley", locale: "California", lat: 36, lon: 116},
-      {name: "Sahara Desert", locale: "Africa", lat: 23, lon: 13}
+      {name: "Dallol", locale: "Ethiopia", lat: 14.1419, lon: 40.1738},
+      {name: "Aziziya", locale: "Libya", lat: 32.3151, lon: 13.0116},
+      {name: "Atacama Desert", locale: "South America", lat: 24.30, lon: 69.15},
+      {name: "Death Valley", locale: "California", lat: 36.1449, lon: 116.4901},
+      {name: "Sahara Desert", locale: "Africa", lat: 29.7, lon: 27.5}
     ]
   };
 
