@@ -39,8 +39,8 @@ var pollingLocations =
     ]
   };
 
-var sunCopOut = {name: "THE SUN", id: 800, type: "Vacuum", desc, "Nothingness", tempMin: 5503, tempMax: 5505, temp: 5504, fetched: false, copOut: true};
-var moonCopOut = {name: "THE DARK SIDE OF THE MOON", id: 800, type: "Vacuum", desc, "Nothingness", tempMin: -154, tempMax: -152, temp: -151, fetched: false, copOut: true};
+var sunCopOut = {name: "THE SUN", id: 800, type: "Vacuum", desc: "Nothingness", tempMin: 5503, tempMax: 5505, temp: 5504, fetched: false, copOut: true};
+var moonCopOut = {name: "THE DARK SIDE OF THE MOON", id: 800, type: "Vacuum", desc: "Nothingness", tempMin: -154, tempMax: -152, temp: -151, fetched: false, copOut: true};
 
 var locks = [
   Object.freeze(defaultLoc),
