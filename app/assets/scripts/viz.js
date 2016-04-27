@@ -25,7 +25,7 @@ function ChosenOfRNGesus(type,targetTemps) {
       dataPrint(defaultWeathers,defaultWeathers);
       return;
     }
-    $.getJSON("/api/getCondLatLon?lat=" + curr.lat + "&lon=" + curr.lon) //first try
+    $.getJSON("/api/getCondLatLon?lat=" + curr.lat + "&lon=" + curr.lon)
     .then(
       function(res){
         if (comparator(targetTemps,res.temp)) {
@@ -52,6 +52,5 @@ function ChosenOfRNGesus(type,targetTemps) {
     }
     console.log(data);
   }
-
   worseFetch();
 }
