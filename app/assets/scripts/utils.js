@@ -40,10 +40,8 @@ function getCssValuePrefix() {
             rtrnVal = prefixes[i];
         }
     }
-
     dom = null;
     delete dom;
-
     return rtrnVal;
 }
 
