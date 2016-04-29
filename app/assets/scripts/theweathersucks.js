@@ -1,3 +1,5 @@
+var savedWeather;
+
 function load(val){
   "use strict";
 
@@ -61,7 +63,7 @@ function load(val){
       },
       function(reason){type = pickType(weather)}
     );
-
+    savedWeather = weather;
     var $deferredWorker1 = $.Deferred();
     var $deferredWorker2 = $.Deferred();
 

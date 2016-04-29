@@ -1,5 +1,8 @@
 function bindInteractivity(){
   bindZip();
+  $(window).resize(
+  function(){ onResize(); }
+  );
 }
 
 function bindZip(){
@@ -15,4 +18,8 @@ function bindZip(){
       load(numberMaybe);
     }
   });
+}
+
+function onResize(){
+  placeTemperature(savedWeather);
 }
